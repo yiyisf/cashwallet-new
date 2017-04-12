@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd"
+	default-autowire="byName">
+	
+	<description>base-grxfw-hessian-server config</description>
+	
+	<!-- 前台用户hessian远程服务 -->
+	<bean name="/userServ.hessian"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.grx.hessian.support.serv.user.impl.UserServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.grx.hessian.iface.serv.user.UserServ" />
+	</bean>
+	<bean name="/smsServ.hessian"
+		  class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.grx.sms.app.serv.impl.SmsServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.grx.sms.app.serv.SmsServ" />
+	</bean>
+
+	<bean name="/zhiyanCallSmsServ.hessian"
+		  class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.grx.sms.app.serv.impl.ZhiyanCallSmsServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.grx.sms.app.serv.ZhiyanSmsServ" />
+	</bean>
+
+	<bean name="/zhiyanCancelCallSmsServ.hessian"
+		  class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.grx.sms.app.serv.impl.ZhiyanCancelCallSmsServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.grx.sms.app.serv.ZhiyanSmsServ" />
+	</bean>
+
+	<bean name="/zhiyanSoundFileDownloadSmsServ.hessian"
+		  class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.grx.sms.app.serv.impl.ZhiyanSoundFileDownloadSmsServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.grx.sms.app.serv.ZhiyanSmsServ" />
+	</bean>
+
+	<bean name="/zhiyanUploadVoiceFileSmsServ.hessian"
+		  class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.grx.sms.app.serv.impl.ZhiyanUploadVoiceFileSmsServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.grx.sms.app.serv.ZhiyanSmsServ" />
+	</bean>
+
+	<bean name="/zhiyanVoiceDownloadSmsServ.hessian"
+		  class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.grx.sms.app.serv.impl.ZhiyanVoiceDownloadSmsServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.grx.sms.app.serv.ZhiyanSmsServ" />
+	</bean>
+
+	<bean name="/zhiyanVoiceNoticeSmsServ.hessian"
+		  class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.grx.sms.app.serv.impl.ZhiyanVoiceNoticeSmsServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.grx.sms.app.serv.ZhiyanSmsServ" />
+	</bean>
+
+	<bean name="/zhiyanVoiceVerifySmsServ.hessian"
+		  class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.grx.sms.app.serv.impl.ZhiyanVoiceVerifySmsServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.grx.sms.app.serv.ZhiyanSmsServ" />
+	</bean>
+
+	<bean name="/productServ.hessian" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.slys.cash.hessian.support.serv.product.impl.ProductServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.slys.cash.hessian.iface.serv.product.ProductServ" />
+	</bean>
+
+	<bean name="/productConfigServ.hessian" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.slys.cash.hessian.support.serv.product.impl.ProductConfigServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.slys.cash.hessian.iface.serv.product.ProductConfigServ" />
+	</bean>
+
+	<bean name="/productDetailsServ.hessian" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.slys.cash.hessian.support.serv.product.impl.ProductDetailsServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.slys.cash.hessian.iface.serv.product.ProductDetailsServ" />
+	</bean>
+
+	<bean name="/productOrderServ.hessian" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.slys.cash.hessian.support.serv.product.impl.ProductOrderServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.slys.cash.hessian.iface.serv.product.ProductOrderServ" />
+	</bean>
+
+	<bean name="/productTypeServ.hessian" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.slys.cash.hessian.support.serv.product.impl.ProductTypeServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.slys.cash.hessian.iface.serv.product.ProductTypeServ" />
+	</bean>
+
+    <bean name="/userBankServ.hessian" class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service">
+            <bean class="com.grx.hessian.support.serv.user.impl.UserBankServImpl" />
+        </property>
+        <property name="serviceInterface" value="com.grx.hessian.iface.serv.user.UserBankServ" />
+    </bean>
+
+    <bean name="/userJobServ.hessian" class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service">
+            <bean class="com.grx.hessian.support.serv.user.impl.UserJobServImpl" />
+        </property>
+        <property name="serviceInterface" value="com.grx.hessian.iface.serv.user.UserJobServ" />
+    </bean>
+	<bean name="/menuServ.hessian" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.slys.cash.hessian.support.serv.menu.impl.MenuServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.slys.cash.hessian.iface.serv.menu.MenuServ" />
+	</bean>
+	<bean name="/permissionServ.hessian"
+		  class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.slys.cash.hessian.support.serv.permission.impl.PermissionServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.slys.cash.hessian.iface.serv.permission.PermissionServ" />
+	</bean>
+
+	<bean name="/jobServ.hessian"
+		  class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.slys.cash.hessian.support.serv.job.impl.JobServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.slys.cash.hessian.iface.serv.job.JobServ" />
+	</bean>
+	<bean name="/permissionGroupRefMenuServ.hessian"
+		  class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.slys.cash.hessian.support.serv.permissiongrouprefmenu.impl.PermissionGroupRefMenuImpl" />
+		</property>
+		<property name="serviceInterface" value="com.slys.cash.hessian.iface.serv.permissiongrouprefmenu.PermissionGroupRefMenuServ" />
+	</bean>
+	<bean name="/feeServ.hessian" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.slys.cash.hessian.support.serv.product.impl.FeeServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.slys.cash.hessian.iface.serv.product.FeeServ" />
+	</bean>
+
+	<bean name="/fee_itemServ.hessian" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<bean class="com.slys.cash.hessian.support.serv.product.impl.Fee_itemServImpl" />
+		</property>
+		<property name="serviceInterface" value="com.slys.cash.hessian.iface.serv.product.Fee_itemServ" />
+	</bean>
+</beans>  
